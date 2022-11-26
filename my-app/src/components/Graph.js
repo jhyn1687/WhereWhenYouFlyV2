@@ -3,6 +3,10 @@ import { VegaLite } from 'react-vega'
 //import { Handler } from 'vega-tooltip'
 
 const spec = {
+  title: {
+    'text': "The Change In The Amount of Flights Out Of Selected Airport From 2018-2021",
+    'align': 'center'
+  },
   width: 750,
   height: 750,
   mark: {
