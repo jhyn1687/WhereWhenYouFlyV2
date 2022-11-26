@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { supabase } from '../supabaseClient'
 import Globe from 'react-globe.gl';
-import * as THREE from 'three';
+import {SphereGeometry,MeshLambertMaterial,Mesh, MOUSE} from 'three';
 
 const Earth = (props) => {
+    const globeEl = useRef()
     const [loading, setLoading] = useState(true)
     const [airports, setAirports] = useState([]);
 
@@ -29,18 +30,31 @@ const Earth = (props) => {
             setLoading(false)
         }
     }
-    const satGeometry = new THREE.SphereGeometry(.25);
-    const satMaterial = new THREE.MeshLambertMaterial({ color: 'ghostwhite', transparent: true, opacity: 0.7 });
-    const THREEobj = new THREE.Mesh(satGeometry, satMaterial);
+    const satGeometry = new SphereGeometry(.25);
+    const satMaterial = new MeshLambertMaterial({ color: 'ghostwhite', transparent: true, opacity: 0.7 });
+    const THREEobj = new Mesh(satGeometry, satMaterial);
 
     useEffect(() => getProfile, [])
 
-    return loading ? <p> loading !</p> : <Globe
+    useEffect(() => { 
+      // aim at continental US centroid 
+      globeEl.current.pointOfView({ lat: 39.6, lng: -98.5, altitude: 0.75 })
+      globeEl.current.controls().maxDistance = 250
+      globeEl.current.controls().mouseButtons = {
+        LEFT: MOUSE.ROTATE,
+        MIDDLE: MOUSE.DOLLY,
+        RIGHT: MOUSE.DOLLY
+      }
+    }, [])
+
+    return <Globe
+        ref={globeEl}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
         objectsData={airports}
         objectLat="Latitude"
         objectLng="Longitude"
+        objectAltitude={0}
         objectThreeObject={THREEobj}
     />
 }
