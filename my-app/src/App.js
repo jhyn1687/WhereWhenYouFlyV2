@@ -16,9 +16,7 @@ function App() {
       {/* make footer component later iykwim */}
       <footer>
         <p>
-          Toony Yuan <br />
-          Erika Moreno Blackburn <br />
-          Eva Liu
+          {'\u00A9'} Junhao Yuan, Erika Morena Blackburn, Eva Liu 2022
         </p>
       </footer>
     </div>
