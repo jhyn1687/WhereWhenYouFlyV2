@@ -29,7 +29,7 @@ const Earth = (props) => {
             setLoading(false)
         }
     }
-    const satGeometry = new THREE.CylinderGeometry( .25, .25, 1);
+    const satGeometry = new THREE.SphereGeometry(.25);
     const satMaterial = new THREE.MeshLambertMaterial({ color: 'ghostwhite', transparent: true, opacity: 0.7 });
     const THREEobj = new THREE.Mesh(satGeometry, satMaterial);
 
