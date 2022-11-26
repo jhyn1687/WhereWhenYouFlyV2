@@ -1,5 +1,6 @@
 {
-  "name": "my-app",
+  "name": "Where When You Fly V2",
+  "homepage": "https://cse442-22au.pages.cs.washington.edu/fp/WhereWhenYouFlyV2/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,10 +9,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "dotenv": "^16.0.3",
-    "globe.gl": "^2.26.10",
     "react": "^18.2.0",
     "react-async": "^10.0.1",
     "react-dom": "^18.2.0",
+    "react-globe.gl": "^2.22.8",
     "react-scripts": "5.0.1",
     "react-vega": "^7.6.0",
     "vega": "^5.22.1",
