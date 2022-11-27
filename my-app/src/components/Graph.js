@@ -1,8 +1,6 @@
 import React from 'react'
 import { VegaLite } from 'react-vega'
-import { Handler } from 'vega-tooltip'
-
-const Graph = () => {
+//import { Handler } from 'vega-tooltip'
 
 const spec = {
   width: 750,
@@ -20,24 +18,20 @@ const spec = {
 }
 
 
-  const barData = {
-    table: [
-      { a: 'A', b: 28 },
-      { a: 'B', b: 55 },
-      { a: 'C', b: 43 },
-      { a: 'D', b: 91 },
-      { a: 'E', b: 81 },
-      { a: 'F', b: 53 },
-      { a: 'G', b: 19 },
-      { a: 'H', b: 87 },
-      { a: 'I', b: 52 },
-    ],
-  }
-
-  return (
-    <VegaLite spec={spec} data={barData} tooltip={new Handler().call} />
-  );
-
+const barData = {
+  table: [
+    { Date: '2018-10-10', Count: 176 },
+    { Date: '2019-5-20', Count: 200 },
+    { Date: '2020-4-15', Count: 45 },
+    { Date: '2020-8-24', Count: 91 },
+    { Date: '2020-12-12', Count: 100 },
+    { Date: '2021-2-5', Count: 53 },
+    { Date: '2021-5-27', Count: 169 },
+    { Date: '2021-8-3', Count: 150 },
+    { Date: '2021-9-7', Count: 52 },
+  ],
 }
 
-export default Graph;
+ReactDOM.render(
+  <VegaLite spec={spec} data={barData} /> // add "tooltip={new Handler().call}" inside if the given tool tip is not enough and we want to create our own https://github.com/vega/vega-tooltip
+);
