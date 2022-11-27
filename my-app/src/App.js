@@ -1,18 +1,25 @@
 import './App.css';
+import React, { useState } from 'react'
 import Graph from './components/Graph'
 // import Globe from 'globe.gl';
 import Earth from './components/Earth'
+import Intro from './components/Intro'
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
+      <div id="content">
+        <Intro /> 
+        <header className="App-header">
+          Where When You Fly V2
+        </header>
         <p>
           WhereWhenYouFly V2
         </p>
         {/* TODO: convert hearder into footer, add copyright thingy :D */}
         <Earth />
-      </header>
+      </div>
       {/* make footer component later iykwim */}
       <footer>
         <p>
