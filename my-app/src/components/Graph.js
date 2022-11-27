@@ -37,7 +37,7 @@ const Graph = () => {
   }
 
   return (
-    <VegaLite spec={spec} data={barData} /> // add "tooltip={new Handler().call}" inside if the given tool tip is not enough and we want to create our own https://github.com/vega/vega-tooltip
+    <VegaLite spec={spec} data={barData} actions={false}/> // add "tooltip={new Handler().call}" inside if the given tool tip is not enough and we want to create our own https://github.com/vega/vega-tooltip
   );
 }
 export default Graph;
