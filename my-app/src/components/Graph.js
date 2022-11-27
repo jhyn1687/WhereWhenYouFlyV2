@@ -63,11 +63,6 @@ const Graph = (props) => {
 }
 export default Graph;
 
-import React, { useState } from 'react'
-import { VegaLite } from 'react-vega'
-import { Handler } from 'vega-tooltip'
-
-
 // const Graph = () => {
 //   const [airport, setAirport] = useState("")
 //   const spec = {
