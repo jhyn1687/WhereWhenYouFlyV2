@@ -12,11 +12,13 @@ function App() {
       <div id="content">
         <Intro /> 
         {/* TODO: convert hearder into footer, add copyright thingy :D */}
-        <div id="Globe">
-          <Earth />
-        </div>
-        <div id="Graph">
-          <Graph className="Graph"/>
+        <div id="container">
+          <div id="Globe">
+            <Earth />
+          </div>
+          <div id="Graph">
+            <Graph className="graph"/>
+          </div>
         </div>
       </div>
       {/* make footer component later iykwim */}
