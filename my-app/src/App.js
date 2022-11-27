@@ -19,6 +19,7 @@ function App() {
         </p>
         {/* TODO: convert hearder into footer, add copyright thingy :D */}
         <Earth />
+        <Graph />
       </div>
       {/* make footer component later iykwim */}
       <footer>
