@@ -16,8 +16,8 @@ function App() {
         <Navigator />
         <Earth id="earth"/>
         <Graph />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }
