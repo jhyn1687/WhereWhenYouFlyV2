@@ -58,6 +58,8 @@ const Earth = (props) => {
         objectLng="Longitude"
         objectAltitude={0}
         objectThreeObject={THREEobj}
+        height={80 * window.screen.availHeight / 100}
+        width={60 * window.screen.availWidth / 100}
     />
 }
 

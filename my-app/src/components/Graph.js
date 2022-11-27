@@ -7,8 +7,8 @@ const Graph = () => {
   const [airport, setAirport] = useState("")
   const spec = {
     title: airport + "something",
-    width: 750,
-    height: 750,
+    width: 40 * window.screen.availWidth / 100,
+    height: 80 * window.screen.availHeight / 100,
     mark: {
       'type': 'line',
       'interpolate': 'monotone', // (maybe try "step-after") check out different types of interpolations at https://vega.github.io/vega-lite/docs/line.html
