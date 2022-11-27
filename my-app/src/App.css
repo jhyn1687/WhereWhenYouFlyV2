@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 1001;
+  z-index: 5;
 }
 
 #continue-button {
@@ -74,4 +74,24 @@
   text-decoration: underline 0.2rem;
   text-underline-offset: 0.3rem;
   margin: 0 0 0.3rem 0;
+}
+
+#footer {
+  cursor: default;
+  position: absolute;
+  bottom: 0;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(155, 155, 155, 0.75);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 4;
+}
+
+.footer-text {
+  color: black;
+  font-size: 0.75rem;
+  margin: 0;
 }
