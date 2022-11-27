@@ -1,7 +1,7 @@
 {
-  "name": "Where When You Fly V2",
+  "name": "WhereWhenYouFlyV2",
   "homepage": "https://cse442-22au.pages.cs.washington.edu/fp/WhereWhenYouFlyV2/",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@supabase/supabase-js": "^2.1.1",
