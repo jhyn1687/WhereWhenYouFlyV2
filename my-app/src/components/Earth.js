@@ -39,13 +39,6 @@ const Earth = (props) => {
     useEffect(() => { 
       // aim at continental US centroid 
       globeEl.current.pointOfView({ lat: 39.6, lng: -98.5, altitude: 0.75 })
-<<<<<<< Updated upstream
-      globeEl.current.controls().maxDistance = 250
-      globeEl.current.controls().mouseButtons = {
-        LEFT: MOUSE.ROTATE,
-        MIDDLE: MOUSE.DOLLY,
-        RIGHT: MOUSE.DOLLY
-=======
       // limits how far out you can zoom
       globeEl.current.controls().maxDistance = 250
       // changes the functionality of right click
@@ -53,7 +46,6 @@ const Earth = (props) => {
         LEFT: MOUSE.ROTATE,
         MIDDLE: MOUSE.DOLLY,
         RIGHT: MOUSE.DOLLY // need to write instructions based on this
->>>>>>> Stashed changes
       }
     }, [])
 
