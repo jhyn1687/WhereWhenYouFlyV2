@@ -15,7 +15,7 @@ function App() {
         <Navigator />
         {/* TODO: convert hearder into footer, add copyright thingy :D */}
         <Earth id="earth"/>
-        <Graph />
+        <Graph airport="IAH"/>
       </div>
       {/* make footer component later iykwim */}
       <footer>
