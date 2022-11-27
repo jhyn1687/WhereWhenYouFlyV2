@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { VegaLite } from 'react-vega'
 //import { Handler } from 'vega-tooltip'
 
 
 const Graph = () => {
+  const [airport, setAirport] = useEffect("")
   const spec = {
-    title: "something",
+    title: airport + "something",
     width: 750,
     height: 750,
     mark: {
@@ -35,7 +36,7 @@ const Graph = () => {
     ],
   }
 
-  ReactDOM.render(
+  return (
     <VegaLite spec={spec} data={barData} /> // add "tooltip={new Handler().call}" inside if the given tool tip is not enough and we want to create our own https://github.com/vega/vega-tooltip
   );
 }
