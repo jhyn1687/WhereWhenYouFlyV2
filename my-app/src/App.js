@@ -15,7 +15,7 @@ function App() {
         <Intro /> 
         <Navigator />
         <Earth id="earth"/>
-        <Graph />
+        <Graph airport="IAH"/>
         <Footer />
       </div>
     </div>

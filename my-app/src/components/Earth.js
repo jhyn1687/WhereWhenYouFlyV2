@@ -5,12 +5,10 @@ import {SphereGeometry,MeshLambertMaterial,Mesh, MOUSE} from 'three';
 
 const Earth = (props) => {
     const globeEl = useRef()
-    const [loading, setLoading] = useState(true)
     const [airports, setAirports] = useState([]);
 
-    const getProfile = async () => {
+    const getAirports = async () => {
         try {
-            setLoading(true)
             let { data, error, status } = await supabase
                 .from('Airports')
                 .select('*')
@@ -26,15 +24,13 @@ const Earth = (props) => {
             }
         } catch (error) {
             alert(error.message)
-        } finally {
-            setLoading(false)
         }
     }
     const satGeometry = new SphereGeometry(.25);
     const satMaterial = new MeshLambertMaterial({ color: 'ghostwhite', transparent: true, opacity: 0.7 });
     const THREEobj = new Mesh(satGeometry, satMaterial);
 
-    useEffect(() => getProfile, [])
+    useEffect(() => getAirports, [])
 
     useEffect(() => { 
       // aim at continental US centroid 
