@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { VegaLite } from 'react-vega'
 //import { Handler } from 'vega-tooltip'
 
 
 const Graph = () => {
-  const [airport, setAirport] = useEffect("")
+  const [airport, setAirport] = useState("")
   const spec = {
     title: airport + "something",
     width: 750,
