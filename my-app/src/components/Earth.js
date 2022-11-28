@@ -35,7 +35,7 @@ const Earth = (props) => {
 
     useEffect(() => { 
       // aim at continental US centroid 
-      globeEl.current.pointOfView({ lat: 39.6, lng: -98.5, altitude: 0.75 })
+      globeEl.current.pointOfView({ lat: 39.6, lng: -98.5, altitude: 2 })
       // limits how far out you can zoom
       globeEl.current.controls().maxDistance = 250
       // changes the functionality of right click
@@ -62,7 +62,7 @@ const Earth = (props) => {
         objectAltitude={0}
         objectThreeObject={THREEobj}
         height={window.innerHeight}
-        width={0.7 * window.innerWidth}
+        width={0.5 * window.innerWidth}
         onObjectClick = {onAirportClick}
 />;
 }

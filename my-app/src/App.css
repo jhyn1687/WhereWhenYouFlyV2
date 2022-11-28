@@ -104,13 +104,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 30vw;
+  min-width: 50vw;
   min-height: 100vh;
   background-image: url("night-sky.png");
 }
 
 #Globe {
-  min-width: 70vw;
+  min-width: 50vw;
   min-height: 100vh;
 }
 
