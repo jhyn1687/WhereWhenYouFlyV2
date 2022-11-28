@@ -11,7 +11,7 @@ const Graph = (props) => {
     try {
       let { data, error, status } = await supabase
         .from("Flights")
-        .select(`Date, Count`)
+        .select(`Date, Count, Cases, Deaths`)
         .eq("Airport", newAirport);
 
       console.log(data);
@@ -75,61 +75,89 @@ const Graph = (props) => {
       {
         layer: [
           {
-          data: { name: "flights" },
-          mark: {
-            type: "line",
-            interpolate: "monotone", // (maybe try "step-after") check out different types of interpolations at https://vega.github.io/vega-lite/docs/line.html
-            tension: 0
-          },
-          title: airport + " data",
-          encoding: {
-            x: { field: "Date", type: "temporal", title: "Date" },
-            y: { field: "Count", type: "quantitative" },
-          },
-          params: [
-            {
-              name: "name3",
-              select: {
-                type: "point",
-                encodings: ["x"],
-                on: "mouseover",
-                toggle: false,
-                nearest: true,
-              },
+            data: { name: "flights" },
+            mark: {
+              type: "bar",
+              fill: "black",
             },
-          ],
-        },
+            encoding: {
+              opacity: {
+                value: 0.5,
+              },
+
+              x: { field: "Date", type: "temporal", title: "Date", scale:{domain: ['2018-01-01', '2021-12-31']}},
+              y: { field: "Cases", type: "quantitative"}, 
+            },
+          },
+          {
+            data: { name: "flights" },
+            mark: {
+              type: "line",
+              interpolate: "monotone", // (maybe try "step-after") check out different types of interpolations at https://vega.github.io/vega-lite/docs/line.html
+              tension: 0,
+              stroke: "#4E79A7"
+            },
+            title: airport + " data",
+            encoding: {
+              x: { field: "Date", type: "temporal", title: "Date" },
+              y: { field: "Count", type: "quantitative",  axis: {titleColor: "#4E79A7"} },
+            },
+            params: [
+              {
+                name: "name3",
+                select: {
+                  type: "point",
+                  encodings: ["x"],
+                  on: "mouseover",
+                  toggle: false,
+                  nearest: true,
+                },
+              },
+            ],
+          },
+
           {
             data: { name: "flights" },
             mark: "rule",
-            params: [{
-              name: "hover",
-              select: {type: "point", 
-              encodings: [
-                "x"
-              ], on: "mouseover", nearest: true}
-            }],
+            params: [
+              {
+                name: "hover",
+                select: {
+                  type: "point",
+                  encodings: ["x"],
+                  on: "mouseover",
+                  nearest: true,
+                },
+              },
+            ],
             encoding: {
-              x: {field: "Date", type: "temporal"},
+              x: { field: "Date", type: "temporal" },
               tooltip: [
                 { field: "Date", type: "temporal" },
-                { field: "Count", type: "quantitative" }
+                { field: "Count", type: "quantitative" },
+                { field: "Cases", type: "quantitative" },
               ],
               opacity: {
-                condition: {value: 0.6, param: "hover", empty: false},
-                value: 0
-              }
-            }
-          }
+                condition: { value: 0.6, param: "hover", empty: false },
+                value: 0,
+              },
+            },
+          },
         ],
-        width: 0.25 * window.innerWidth,
-        height: 0.25 * window.innerWidth,
+        resolve: {scale: {y: "independent"}}, 
+        width: 0.4 * window.innerWidth,
+        height: 0.1 * window.innerWidth,
         encoding: {
-          x: { field: "Date", type: "temporal", title: "Date", scale: {
-            domain: {
-              param: "name4"
-            }
-          }},
+          x: {
+            field: "Date",
+            type: "temporal",
+            title: "Date",
+            scale: {
+              domain: {
+                param: "name4",
+              },
+            },
+          },
           y: { field: "Count", type: "quantitative" },
         },
         tooltip: [
@@ -159,8 +187,8 @@ const Graph = (props) => {
             },
           },
         ],
+        width: 0.4 * window.innerWidth,
         height: 75,
-        width: 0.25 * window.innerWidth,  
       },
     ],
   };
