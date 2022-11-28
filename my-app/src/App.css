@@ -1,3 +1,7 @@
+body {
+  margin: 0px;
+}
+
 .App {
   text-align: center;
 }
@@ -80,6 +84,34 @@
   text-decoration: underline 0.2rem;
   text-underline-offset: 0.3rem;
   margin: 0 0 0.3rem 0;
+}
+
+#container {
+  cursor: default;
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  z-index: 2;
+}
+
+#Graph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30vw;
+  min-height: 100vh;
+  background-image: url("night-sky.png");
+}
+
+#Globe {
+  min-width: 70vw;
+  min-height: 100vh;
 }
 
 #footer {

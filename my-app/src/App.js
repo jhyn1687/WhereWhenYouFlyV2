@@ -13,13 +13,19 @@ function App() {
   return (
     <div className="App">
       <div id="content">
-        {/* <Intro />  */}
+        <Intro />
         <Navigator />
-        <Popup popup={true}/> 
+        <Popup popup={false}/> 
         {/* set to true for popup to show (add logic later) */}
-        <Earth id="earth"/>
-        <Graph airport="IAH"/>
-        <Footer />
+        <div id="container">
+          <div id="Globe">
+            <Earth id="earth"/>
+          </div>
+          <div id="Graph">
+            <Graph airport="IAH"/>
+          </div>
+        </div>
+        <Footer className="graph"/>
       </div>
     </div>
   );
