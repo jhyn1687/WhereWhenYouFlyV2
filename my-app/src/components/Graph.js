@@ -41,8 +41,8 @@ const Graph = (props) => {
 
   const spec = {
     title: airport + " data",
-    width: 750,
-    height: 750,
+    width: 0.25 * window.innerWidth,
+    height: 0.25 * window.innerWidth,
     mark: {
       type: 'line',
       interpolate: 'monotone', // (maybe try "step-after") check out different types of interpolations at https://vega.github.io/vega-lite/docs/line.html

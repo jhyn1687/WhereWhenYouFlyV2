@@ -14,9 +14,15 @@ function App() {
       <div id="content">
         <Intro /> 
         <Navigator />
-        <Earth id="earth"/>
-        <Graph airport="IAH"/>
-        <Footer />
+        <div id="container">
+          <div id="Globe">
+            <Earth id="earth"/>
+          </div>
+          <div id="Graph">
+            <Graph airport="IAH"/>
+          </div>
+        </div>
+        <Footer className="graph"/>
       </div>
     </div>
   );
