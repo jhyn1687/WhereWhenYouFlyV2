@@ -6,9 +6,9 @@ import { Handler } from 'vega-tooltip'
 
 const Graph = (props) => {
   const [airport, setAirport] = useState("")
-  const [data, setData] = useState([])
+  const [flightsData, setFlightsData] = useState([])
 
-  const getData = async (newAirport) => {
+  const getFlightsData = async (newAirport) => {
     try {
         let { data, error, status } = await supabase
             .from('Flights')
@@ -22,14 +22,14 @@ const Graph = (props) => {
         }
 
         if (data) {
-            setData(data)
+          setFlightsData(data)
         }
     } catch (error) {
         alert(error.message)
     }
 }
   const handleChange = (newAirport) => {
-    getData(newAirport)
+    getFlightsData(newAirport)
   }
 
   useEffect(() => {
@@ -61,11 +61,11 @@ const Graph = (props) => {
       x: { field: 'Date', type: 'temporal', title: 'Date'},
       y: { field: 'Count', type: 'quantitative', title: "# of Flights"},
     },
-    data: { name: 'table' }, // note: vega-lite data attribute is a plain object instead of an array
+    data: { name: 'flights' }, // note: vega-lite data attribute is a plain object instead of an array
   }
 
   return (
-    <VegaLite spec={spec} data={{table: data}} tooltip={new Handler().call} actions={false}/> // add "tooltip={new Handler().call}" inside if the given tool tip is not enough and we want to create our own https://github.com/vega/vega-tooltip
+    <VegaLite spec={spec} data={{flights: flightsData, }} tooltip={new Handler().call} actions={false}/> // add "tooltip={new Handler().call}" inside if the given tool tip is not enough and we want to create our own https://github.com/vega/vega-tooltip
   );
 }
 export default Graph;
