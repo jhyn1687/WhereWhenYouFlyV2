@@ -6,7 +6,6 @@ import {SphereGeometry,MeshLambertMaterial,Mesh, MOUSE} from 'three';
 const Earth = (props) => {
     const globeEl = useRef()
     const [airports, setAirports] = useState([]);
-    const [airportNames, setAirportNames] = useState([]);
 
     const getAirports = async () => {
         try {
@@ -28,25 +27,6 @@ const Earth = (props) => {
         }
     }
 
-    const getAirportNames = async () => {
-        try {
-            let { aData, error, status } = await supabase
-                .from('Airports')
-                .select('IATA')
-                
-            console.log(aData)
-            
-            if (error && status !== 406) {
-                throw error
-            }
-
-            if (aData) {
-                setAirportNames(aData)
-            }
-        } catch (error) {
-            alert(error.message)
-        }
-    }
     const satGeometry = new SphereGeometry(.25);
     const satMaterial = new MeshLambertMaterial({ color: 'ghostwhite', transparent: true, opacity: 0.7 });
     const THREEobj = new Mesh(satGeometry, satMaterial);
@@ -81,6 +61,8 @@ const Earth = (props) => {
         objectLng='Longitude'
         objectAltitude={0}
         objectThreeObject={THREEobj}
+        height={window.innerHeight}
+        width={0.7 * window.innerWidth}
         onObjectClick = {onAirportClick}
 />;
 }
