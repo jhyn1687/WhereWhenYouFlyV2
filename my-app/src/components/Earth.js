@@ -6,6 +6,7 @@ import {SphereGeometry,MeshLambertMaterial,Mesh, MOUSE} from 'three';
 const Earth = (props) => {
     const globeEl = useRef()
     const [airports, setAirports] = useState([]);
+    const [airportNames, setAirportNames] = useState([]);
 
     const getAirports = async () => {
         try {
@@ -21,6 +22,26 @@ const Earth = (props) => {
 
             if (data) {
                 setAirports(data)
+            }
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
+    const getAirportNames = async () => {
+        try {
+            let { aData, error, status } = await supabase
+                .from('Airports')
+                .select('IATA')
+                
+            console.log(aData)
+            
+            if (error && status !== 406) {
+                throw error
+            }
+
+            if (aData) {
+                setAirportNames(aData)
             }
         } catch (error) {
             alert(error.message)
@@ -45,18 +66,23 @@ const Earth = (props) => {
       }
     }, [])
 
+    const onAirportClick = (obj) => {
+        console.log(obj);
+        props.changeAirport(obj.IATA);
+    }
+
     return <Globe
         ref={globeEl}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-dark.jpg"
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
         objectsData={airports}
-        objectLat="Latitude"
-        objectLng="Longitude"
+        objectLabel='IATA'
+        objectLat='Latitude'
+        objectLng='Longitude'
         objectAltitude={0}
         objectThreeObject={THREEobj}
-        height={window.innerHeight }
-        width={0.7 * window.innerWidth}
-    />
+        onObjectClick = {onAirportClick}
+/>;
 }
 
 export default Earth;
