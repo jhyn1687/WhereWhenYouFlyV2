@@ -10,6 +10,8 @@ import Popup from './components/Popup'
 
 function App() {
 
+  const [changeAirport, setChangeAirport] = useState("")
+
   return (
     <div className="App">
       <div id="content">
@@ -19,7 +21,7 @@ function App() {
         {/* set to true for popup to show (add logic later) */}
         <div id="container">
           <div id="Globe">
-            <Earth id="earth"/>
+            <Earth id="earth" changeAirport={setChangeAirport}/>
           </div>
           <div id="Graph">
             <Graph airport="IAH"/>
