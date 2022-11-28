@@ -4,6 +4,8 @@ import Graph from './components/Graph'
 // import Globe from 'globe.gl';
 import Earth from './components/Earth'
 import Intro from './components/Intro'
+import Navigator from './components/Navigator'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -11,22 +13,17 @@ function App() {
     <div className="App">
       <div id="content">
         <Intro /> 
-        {/* TODO: convert hearder into footer, add copyright thingy :D */}
+        <Navigator />
         <div id="container">
           <div id="Globe">
-            <Earth />
+            <Earth id="earth"/>
           </div>
           <div id="Graph">
-            <Graph className="graph"/>
+            <Graph airport="IAH"/>
           </div>
         </div>
+        <Footer className="graph"/>
       </div>
-      {/* make footer component later iykwim */}
-      <footer>
-        <p>
-          {'\u00A9'} Junhao Yuan, Erika Moreno Blackburn, Eva Liu 2022
-        </p>
-      </footer>
     </div>
   );
 }
