@@ -7,33 +7,30 @@ const Graph = (props) => {
   const [airport, setAirport] = useState("");
   const [flightsData, setFlightsData] = useState([]);
 
-  const getFlightsData = async (newAirport) => {
-    try {
-      let { data, error, status } = await supabase
-        .from("Flights")
-        .select(`Date, Count, Cases, Deaths`)
-        .eq("Airport", newAirport);
-
-      console.log(data);
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setFlightsData(data);
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-  const handleChange = (newAirport) => {
-    getFlightsData(newAirport);
-  };
-
   useEffect(() => {
+    async function getFlightsData(newAirport) {
+      try {
+        let { data, error, status } = await supabase
+          .from("Flights")
+          .select(`Date, Count, Cases, Deaths`)
+          .eq("Airport", newAirport);
+  
+        console.log(data);
+  
+        if (error && status !== 406) {
+          throw error;
+        }
+  
+        if (data) {
+          setFlightsData(data);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+
     if (props.airport !== airport) {
-      handleChange(props.airport);
+      getFlightsData(props.airport);
       setAirport(props.airport);
     }
   }, [props]);
