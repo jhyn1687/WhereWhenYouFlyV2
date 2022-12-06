@@ -28,7 +28,27 @@ const Article = () => {
       Citations: <br/>
       https://www.biggestuscities.com/city/barrow-alaska <br/>
       https://www.census.gov/quickfacts/fact/table/jamescitycdpnorthcarolina/HSD410220 <br/>
+      </p>
 
+      <h1 style={{color:"white"}}>Urban Airports the East Versus the West (LAX and ORD)</h1>
+      <p style={{color:"white"}}>
+      We can see both amounts for flights out dip way down as soon as cases show up in the state. 
+      Chicago (ORD)  goes from aount 900 to around 500 while LA (LAX) goes from around 600 to 400 flights. 
+      Chicago dips down around twice as much as LA. The lowest that LA and Chicago both get because of covid
+       is around 200 flights out. LA has a lot more cases than Chicago during the end of 2020 and the start 
+       of 2021 however the difference between flights going out during this time is around 100 Where the average
+        for Chicago was 400 and the Average for LA was around 300. At this time LA was closer to the average 
+        amount of flights that the airport had before the covid era, this could have accounted for the increased
+         amount of cases. LA’s bigger population might also have a big factor for this, with LA having around 
+         1 million more people living in the city than Chicago during this time. There is definitely the trend 
+         for both that as the amount covid cases rises we see the amount of flights out dips. The highest amount 
+         of flight going out for Chicago during the covid era was around 850 and LA’s highest was around 600. The 
+         difference between the highest amount of flights out before and during the covid era for Chicago was 
+         around 200, and for LA the difference was around 150. As of the end of 2021 we see a downward trend 
+         for the amount of flights in both airports as the number of covid cases increased. <br/>
+      Citations: <br/>
+      https://www.usatoday.com/story/travel/news/2022/10/15/what-is-the-busiest-airport/10341892002/ <br/>
+      https://www.bts.gov/topics/airlines-and-airports/rural-airports <br/>
       </p>
 
     </div>
