@@ -7,13 +7,19 @@ const Earth = (props) => {
   const globeEl = useRef();
   const [airports, setAirports] = useState([]);
 
+  const highlightAirports = ["BRW", "EWN", "LAX", "ORD"]
   const satGeometry = new SphereGeometry(0.25);
-  const satMaterial = new MeshLambertMaterial({
+  const normalMaterial = new MeshLambertMaterial({
     color: "ghostwhite",
     transparent: true,
     opacity: 0.7,
   });
-  const THREEobj = new Mesh(satGeometry, satMaterial);
+  const highlightMaterial = new MeshLambertMaterial({
+    color: "darkorchid",
+    transparent: true,
+    opacity: 0.7,
+  });
+
 
   useEffect(() => {
     async function getAirports() {
@@ -56,6 +62,13 @@ const Earth = (props) => {
     props.changeAirport(obj.IATA);
   };
 
+  const getTHREEobj = (arg) => {
+    if(highlightAirports.indexOf(arg.IATA) >= 0) {
+      return new Mesh(satGeometry, highlightMaterial);
+    }
+    return new Mesh(satGeometry, normalMaterial);
+  }
+
   return (
     <Globe
       ref={globeEl}
@@ -66,7 +79,7 @@ const Earth = (props) => {
       objectLat="Latitude"
       objectLng="Longitude"
       objectAltitude={0}
-      objectThreeObject={THREEobj}
+      objectThreeObject={getTHREEobj}
       height={window.innerHeight}
       width={0.5 * window.innerWidth}
       onObjectClick={onAirportClick}
