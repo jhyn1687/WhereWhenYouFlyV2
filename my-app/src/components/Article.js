@@ -50,7 +50,6 @@ const Article = () => {
       https://www.usatoday.com/story/travel/news/2022/10/15/what-is-the-busiest-airport/10341892002/ <br/>
       https://www.bts.gov/topics/airlines-and-airports/rural-airports <br/>
       </p>
-
     </div>
   );
 };
