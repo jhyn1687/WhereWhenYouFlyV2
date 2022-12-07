@@ -17,10 +17,9 @@ const Navigator = (props) => {
         <p className="nav-text">Use left mouse button to rotate the globe</p>
         <p className="nav-text">Use scroll wheel or right mouse button to zoom</p>
         <p className="nav-text">Click on an airport to see more details</p>
-
       </div>
       <div id="nav-controls-links">
-        <button className="button" onClick={onCreditClick}>Credits</button>
+        <button className="button nav-text underlined" onClick={onCreditClick}>Credits</button>
       </div>
     </div>
     </>

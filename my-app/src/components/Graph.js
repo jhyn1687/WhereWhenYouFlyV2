@@ -6,7 +6,6 @@ import { Handler } from "vega-tooltip";
 const Graph = (props) => {
   const [airport, setAirport] = useState("");
   const [flightsData, setFlightsData] = useState([]);
-
   useEffect(() => {
     async function getFlightsData(newAirport) {
       try {
@@ -39,7 +38,6 @@ const Graph = (props) => {
     vconcat: [
       {
         layer: [
-          
           {
             data: { name: "flights" },
             mark: {
@@ -53,18 +51,6 @@ const Graph = (props) => {
               x: { field: "Date", type: "temporal", title: "Date" },
               y: { field: "Count", type: "quantitative", axis: {titleColor: "#4E79A7"}, title: "Outgoing Flights" },
             },
-            params: [
-              {
-                name: "name3",
-                select: {
-                  type: "point",
-                  encodings: ["x"],
-                  on: "mouseover",
-                  toggle: false,
-                  nearest: true,
-                },
-              },
-            ],
           },{
             data: { name: "flights" },
             mark: {
@@ -73,7 +59,7 @@ const Graph = (props) => {
             },
             encoding: {
               opacity: {
-                value: 0.5,
+                value: 0.3,
               },
 
               x: { field: "Date", type: "temporal", title: "Date", scale:{domain: ['2018-01-01', '2021-12-31']}},

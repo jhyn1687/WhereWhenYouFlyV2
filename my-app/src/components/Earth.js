@@ -6,6 +6,7 @@ import { SphereGeometry, MeshLambertMaterial, Mesh, MOUSE } from "three";
 const Earth = (props) => {
   const globeEl = useRef();
   const [airports, setAirports] = useState([]);
+  const [IATA, setIATA] = useState("");
 
   const highlightAirports = ["BRW", "EWN", "LAX", "ORD"]
   const satGeometry = new SphereGeometry(0.25);
@@ -57,9 +58,28 @@ const Earth = (props) => {
     };
   }, []);
 
+  const zoomToAirport = (lat, lng) => {
+    globeEl.current.pointOfView({ lat: lat, lng: lng, altitude: 0.5})
+  }
+
+  useEffect(() => {
+    const handleZoom = (IATA) => {
+      let result = airports.find(obj => {
+        return obj.IATA === IATA
+      })
+      if(result !== undefined) {
+        zoomToAirport(result.Latitude, result.Longitude)
+      }
+    }
+    if (props.IATA !== IATA) {
+      handleZoom(IATA);
+      setIATA(IATA);
+    }
+  }, [props, IATA, airports]);
+
   const onAirportClick = (obj) => {
-    console.log(obj);
     props.changeAirport(obj.IATA);
+    zoomToAirport(obj.Latitude, obj.Longitude);
   };
 
   const getTHREEobj = (arg) => {

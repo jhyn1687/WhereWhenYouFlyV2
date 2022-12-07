@@ -12,10 +12,19 @@ const Popup = (props) => {
       <div id="popup-screen">
         <div id="popup-text">
           <h1 className="popup-title">Where When You Fly V2</h1>
-          <p className="popup-subtitle"><a href="https://tnyyn.com/">Junhao Yuan</a>, <a href="https://www.linkedin.com/in/erika-moreno-blackburn-65311a192/">Erika Moreno Blackburn</a>, <a href="https://www.linkedin.com/in/evaliu02/">Eva Liu</a></p>
+          <p className="popup-subtitle"><a href="https://tnyyn.com/">Junhao Yuan</a>
+          , <a href="https://www.linkedin.com/in/erika-moreno-blackburn-65311a192/">Erika Moreno Blackburn</a>
+          , <a href="https://www.linkedin.com/in/evaliu02/">Eva Liu</a></p>
           <p className="popup-text">Created for <a href="https://courses.cs.washington.edu/courses/cse442/22au/">CSE 442</a> using </p>
           <p className="popup-text">
-            <a href="https://reactjs.org/">React</a>, <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>, <a href="https://globe.gl/">Globe.gl</a>, and <a href="https://supabase.com/">Supabase</a>
+            <a href="https://reactjs.org/">React</a>, <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>
+            , <a href="https://globe.gl/">Globe.gl</a>, and <a href="https://supabase.com/">Supabase</a>
+          </p>
+          <p className="popup-text">
+            COVID data from <a href="https://catalog.data.gov/dataset/united-states-covid-19-cases-and-deaths-by-state-over-time">data.gov</a>
+          </p>
+          <p className="popup-text">
+            Flights data from <a href="https://transtats.bts.gov/Fields.asp?gnoyr_VQ=FGJ">transtats.bts.gov</a>
           </p>
         </div>
         <button id="close-button" onClick={onClose}>

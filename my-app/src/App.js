@@ -19,7 +19,7 @@ function App() {
         <Popup popup={popup} setPopup={setPopup}/> 
         <div id="container">
           <div id="Globe">
-            <Earth id="earth" changeAirport={setAirport}/>
+            <Earth id="earth" changeAirport={setAirport} IATA={"EWN"}/>
           </div>
           <div id="Graph">
             <Article/>
