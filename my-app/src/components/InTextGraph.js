@@ -105,8 +105,6 @@ const InTextGraph = (props) => {
       },
     ],
     resolve: {scale: {y: "independent"}}, 
-    width: 0.2 * window.innerWidth,
-    height: 0.1 * window.innerWidth,
     encoding: {
       x: {
         field: "Date",
@@ -126,11 +124,14 @@ const InTextGraph = (props) => {
   return (
     airport === "" ? <></> :
     <VegaLite
+      className="intext-graph"
       spec={spec}
       data={{ flights: flightsData }}
       tooltip={new Handler().call}
       actions={false}
-    /> // add "tooltip={new Handler().call}" inside if the given tool tip is not enough and we want to create our own https://github.com/vega/vega-tooltip
+      width={0.15 * window.innerWidth}
+      height={0.3 * window.innerHeight}
+    /> 
   );
 };
 export default InTextGraph;

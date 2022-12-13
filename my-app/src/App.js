@@ -1,6 +1,5 @@
 import './App.css';
 import React, { useState } from 'react'
-import Graph from './components/Graph'
 // import Globe from 'globe.gl';
 import Earth from './components/Earth'
 import Navigator from './components/Navigator'
@@ -19,11 +18,10 @@ function App() {
         <Popup popup={popup} setPopup={setPopup}/> 
         <div id="container">
           <div id="Globe">
-            <Earth id="earth" changeAirport={setAirport} IATA={"EWN"}/>
+            <Earth id="earth" changeAirport={setAirport} />
           </div>
           <div id="Graph">
-            <Article/>
-            <Graph airport={airport}/>
+            <Article airport={airport}/>
           </div>
         </div>
         <Footer className="graph"/>

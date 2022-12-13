@@ -62,21 +62,6 @@ const Earth = (props) => {
     globeEl.current.pointOfView({ lat: lat, lng: lng, altitude: 0.5})
   }
 
-  useEffect(() => {
-    const handleZoom = (IATA) => {
-      let result = airports.find(obj => {
-        return obj.IATA === IATA
-      })
-      if(result !== undefined) {
-        zoomToAirport(result.Latitude, result.Longitude)
-      }
-    }
-    if (props.IATA !== IATA) {
-      handleZoom(IATA);
-      setIATA(IATA);
-    }
-  }, [props, IATA, airports]);
-
   const onAirportClick = (obj) => {
     props.changeAirport(obj.IATA);
     zoomToAirport(obj.Latitude, obj.Longitude);
