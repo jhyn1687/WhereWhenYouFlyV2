@@ -1,33 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { AiOutlineClose as Close } from 'react-icons/ai'
 
 const Popup = (props) => {
-  const [popup, setPopup] = useState(false);
-
   const onClose = () => {
-    setPopup(false)
+    props.setPopup(false)
   }
-
-  useEffect(() => {
-    if(props.popup !== popup) {
-      setPopup(!popup)
-    }
-  }, [props]);
 
   return (
     <>
-    <div id="popup-screen-container" style={popup ? {display:"flex"} : {display:"none"}}>
+    <div id="popup-screen-container" style={props.popup ? {display:"flex"} : {display:"none"}}>
       <div id="popup-screen">
         <div id="popup-text">
           <h1 className="popup-title">Where When You Fly V2</h1>
-          <p className="popup-subtitle">Junhao Yuan, Erika Moreno Blackburn, Eva Liu</p>
-          <p className="popup-text">Tracking how COVID-19 affected outgoing flights at major US airports</p>
-          <p className="popup-text">I think our rationale is supposed to be with the data.</p>
-          <p className="popup-text">(since this is supposed to be like a interactive article)</p>
-          <p className="popup-text">So we can use this for credits maybe?</p>
-          <p className="popup-text">Created for CSE 442 using React, Globe.gl, and Supabase</p> 
-          {/* add links? */}
-          <p className="popup-text"></p>
+          <p className="popup-subtitle"><a href="https://tnyyn.com/">Junhao Yuan</a>
+          , <a href="https://www.linkedin.com/in/erika-moreno-blackburn-65311a192/">Erika Moreno Blackburn</a>
+          , <a href="https://www.linkedin.com/in/evaliu02/">Eva Liu</a></p>
+          <p className="popup-text">Created for <a href="https://courses.cs.washington.edu/courses/cse442/22au/">CSE 442</a> using </p>
+          <p className="popup-text">
+            <a href="https://reactjs.org/">React</a>, <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>
+            , <a href="https://globe.gl/">Globe.gl</a>, and <a href="https://supabase.com/">Supabase</a>
+          </p>
+          <p className="popup-text">
+            COVID data from <a href="https://catalog.data.gov/dataset/united-states-covid-19-cases-and-deaths-by-state-over-time">data.gov</a>
+          </p>
+          <p className="popup-text">
+            Flights data from <a href="https://transtats.bts.gov/Fields.asp?gnoyr_VQ=FGJ">transtats.bts.gov</a>
+          </p>
         </div>
         <button id="close-button" onClick={onClose}>
           <Close className="popup-button"/>

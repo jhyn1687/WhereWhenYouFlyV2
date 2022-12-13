@@ -6,13 +6,12 @@ import { Handler } from "vega-tooltip";
 const Graph = (props) => {
   const [airport, setAirport] = useState("");
   const [flightsData, setFlightsData] = useState([]);
-
   useEffect(() => {
     async function getFlightsData(newAirport) {
       try {
         let { data, error, status } = await supabase
           .from("Flights")
-          .select(`Date, Count, Cases, Deaths`)
+          .select(`Date, Count, State, Cases, Deaths`)
           .eq("Airport", newAirport);
   
         console.log(data);
@@ -33,45 +32,26 @@ const Graph = (props) => {
       getFlightsData(props.airport);
       setAirport(props.airport);
     }
-  }, [props]);
-
-  // const spec = {
-  //   title: airport + " data",
-  //   width: 0.25 * window.innerWidth,
-  //   height: 0.25 * window.innerWidth,
-  //   params : [ // this adds the pan and zoom feature
-  //     {
-  //       name: "grid",
-  //       select: 'interval',
-  //       bind: 'scales'
-  //     }
-  //   ],
-  //   mark: {
-  //     type: 'line',
-  //     interpolate: 'monotone', // (maybe try "step-after") check out different types of interpolations at https://vega.github.io/vega-lite/docs/line.html
-  //     tension: 0,
-  //     tooltip: true, // equivalent to setting the tooltip property to {"content" "encoding"} (This will show date and amount of flights)
-  //     point: true
-  //   },
-  //   encoding: {
-  //     x: { field: 'Date', type: 'temporal', title: 'Date'},
-  //     y: { field: 'Count', type: 'quantitative', title: "# of Flights"},
-  //   },
-  //   data: { name: 'flights' }, // note: vega-lite data attribute is a plain object instead of an array
-  // }
+  }, [props, airport]);
 
   const spec = {
-    // params : [ // this adds the pan and zoom feature
-    //   {
-    //     name: "grid",
-    //     select: 'interval',
-    //     bind: 'scales'
-    //   }
-    // ],
     vconcat: [
       {
         layer: [
           {
+            data: { name: "flights" },
+            mark: {
+              type: "line",
+              interpolate: "basis", // (maybe try "step-after") check out different types of interpolations at https://vega.github.io/vega-lite/docs/line.html
+              tension: 0,
+              stroke: "#4E79A7",
+            },
+            title: "Outgoing Flights at " + airport + " airport vs. COVID Cases data for " + (flightsData.length > 0 ? flightsData[0].State : ""),
+            encoding: {
+              x: { field: "Date", type: "temporal", title: "Date" },
+              y: { field: "Count", type: "quantitative", axis: {titleColor: "#4E79A7"}, title: "Outgoing Flights" },
+            },
+          },{
             data: { name: "flights" },
             mark: {
               type: "bar",
@@ -79,40 +59,13 @@ const Graph = (props) => {
             },
             encoding: {
               opacity: {
-                value: 0.5,
+                value: 0.3,
               },
 
               x: { field: "Date", type: "temporal", title: "Date", scale:{domain: ['2018-01-01', '2021-12-31']}},
-              y: { field: "Cases", type: "quantitative"}, 
+              y: { field: "Cases", type: "quantitative", axis: {titleColor: "#000000"}, title: "# of COVID Cases" }, 
             },
           },
-          {
-            data: { name: "flights" },
-            mark: {
-              type: "line",
-              interpolate: "monotone", // (maybe try "step-after") check out different types of interpolations at https://vega.github.io/vega-lite/docs/line.html
-              tension: 0,
-              stroke: "#4E79A7"
-            },
-            title: airport + " data",
-            encoding: {
-              x: { field: "Date", type: "temporal", title: "Date" },
-              y: { field: "Count", type: "quantitative",  axis: {titleColor: "#4E79A7"} },
-            },
-            params: [
-              {
-                name: "name3",
-                select: {
-                  type: "point",
-                  encodings: ["x"],
-                  on: "mouseover",
-                  toggle: false,
-                  nearest: true,
-                },
-              },
-            ],
-          },
-
           {
             data: { name: "flights" },
             mark: "rule",
@@ -131,8 +84,8 @@ const Graph = (props) => {
               x: { field: "Date", type: "temporal" },
               tooltip: [
                 { field: "Date", type: "temporal" },
-                { field: "Count", type: "quantitative" },
-                { field: "Cases", type: "quantitative" },
+                { field: "Count", type: "quantitative", title: "Outgoing Flights" },
+                { field: "Cases", type: "quantitative", title: "# of COVID Cases" },
               ],
               opacity: {
                 condition: { value: 0.6, param: "hover", empty: false },
@@ -155,7 +108,6 @@ const Graph = (props) => {
               },
             },
           },
-          y: { field: "Count", type: "quantitative" },
         },
         tooltip: [
           {
@@ -171,8 +123,8 @@ const Graph = (props) => {
           type: "line",
         },
         encoding: {
-          x: { field: "Date", type: "temporal", title: "Date" },
-          y: { field: "Count", type: "quantitative" },
+          x: { field: "Date", type: "temporal", title: "Date", scale:{domain: ['2018-01-01', '2021-12-31']}},
+          y: { field: "Count", type: "quantitative", title: "Outgoing Flights", axis: {titleColor: "#4E79A7"}},
         },
         params: [
           {
@@ -191,6 +143,7 @@ const Graph = (props) => {
   };
 
   return (
+    airport === "" ? <></> :
     <VegaLite
       spec={spec}
       data={{ flights: flightsData }}
