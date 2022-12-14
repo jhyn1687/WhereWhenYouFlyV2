@@ -6,7 +6,6 @@ import { SphereGeometry, MeshLambertMaterial, Mesh, MOUSE } from "three";
 const Earth = (props) => {
   const globeEl = useRef();
   const [airports, setAirports] = useState([]);
-  const [IATA, setIATA] = useState("");
 
   const highlightAirports = ["BRW", "EWN", "LAX", "ORD"]
   const satGeometry = new SphereGeometry(0.25);
