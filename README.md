@@ -1,5 +1,9 @@
 # WhereWhenYouFlyV2 <br/>
-A Webpage Displaying Flight Information from Before vs After the Start of COVID-19 <br />
-Worked on by Erika Moreno Blackburn, Junhao Yuan, Eva Liu <br />
-2022 <br />
-https://cse442-22au.pages.cs.washington.edu/fp/WhereWhenYouFlyV2/
+An interactive article discussing the effects of COVID-19 on Outbound US travels at airports across the country.<br />
+
+Created by Erika Moreno Blackburn, [Junhao Yuan](//tnyyn.com), Eva Liu <br />
+CSE 442, Autumn 2022 <br />
+
+Hosted at:
+* [//wwyfv2.tnyyn.com/](//wwyfv2.tnyyn.com/) (Up to date version)
+* [UW CS GitLab](https://cse442.pages.cs.washington.edu/au22/fp/WhereWhenYouFlyV2/) (Outdated Version)

@@ -1,7 +1,7 @@
 {
   "name": "WhereWhenYouFlyV2",
   "homepage": "https://wwyfv2.jhyn.dev",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@supabase/supabase-js": "^2.1.1",

@@ -20,11 +20,11 @@ function App() {
           <div id="Globe">
             <Earth id="earth" changeAirport={setAirport} />
           </div>
-          <div id="Graph">
+          <div id="Article-container">
             <Article airport={airport}/>
           </div>
         </div>
-        <Footer className="graph"/>
+        <Footer/>
       </div>
     </div>
   );
