@@ -1,6 +1,5 @@
 {
   "name": "WhereWhenYouFlyV2",
-  "homepage": "https://wwyfv2.jhyn.dev",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
